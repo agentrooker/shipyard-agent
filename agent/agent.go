@@ -250,7 +250,7 @@ func syncDocker(d time.Duration) {
 }
 
 // Registers with Shipyard at the specified URL
-func register(hostIP) string {
+func register(hostIP string) string {
 	hostname, err := os.Hostname()
 	if err != nil {
 		log.Fatalf("Error registering with Shipyard: %s", err)
