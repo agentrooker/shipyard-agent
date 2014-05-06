@@ -83,7 +83,7 @@ func init() {
 	flag.BoolVar(&version, "version", false, "Shows Agent Version")
 	flag.StringVar(&address, "address", "0.0.0.0", "Agent Listen Address (default: 0.0.0.0)")
 	flag.IntVar(&port, "port", 4500, "Agent Listen Port")
-	flag.StringVar(&hostIP, "hostname", nil, "Agent Public Hostname")
+	flag.StringVar(&hostIP, "hostname", "", "Agent Public Hostname")
 
 	flag.Parse()
 
@@ -264,7 +264,7 @@ func register(hostIP) string {
 		"127.0.0.1":   false,
 		"172.17.42.1": false,
 	}
-	if hostIP != nil {
+	if hostIP == "" {
   	for _, addr := range addrs {
   		ip, _, err := net.ParseCIDR(addr.String())
   		if err != nil {
